@@ -1,11 +1,13 @@
+import json
+
 # Desafio 1: Valor da variável SOMA
 def calcular_soma():
     INDICE = 13
     SOMA = 0
     K = 0
     while K < INDICE:
-        K = K + 1
-        SOMA = SOMA + K
+        K += 1
+        SOMA += K
     print(f"Desafio 1: O valor final de SOMA é {SOMA}")
 
 # Desafio 2: Verificação na Sequência de Fibonacci
@@ -19,12 +21,11 @@ def fibonacci_check(n):
         return f"O número {n} não pertence à sequência de Fibonacci."
 
 # Desafio 3: Análise de Faturamento Diário
-import json
-
 def analisar_faturamento(file_path):
     with open(file_path, 'r') as file:
         data = json.load(file)
 
+    # Filtra apenas os dias com faturamento positivo
     faturamento = [dia['valor'] for dia in data if dia['valor'] > 0]
 
     menor_valor = min(faturamento)
@@ -60,7 +61,7 @@ if __name__ == "__main__":
     print(fibonacci_check(numero))
 
     # Desafio 3
-    arquivo_json = "faturamento.json"  #Caminho do arquivo JSON
+    arquivo_json = "faturamento.json"  # Caminho do arquivo JSON
     analisar_faturamento(arquivo_json)
 
     # Desafio 4
